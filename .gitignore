@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# VS Code (optional)
+.vscode/
+
+# COBOL Build-Artefakte
+*.o
+*.so
+*.dylib
+
+# Ausführbare Programme
+hello
