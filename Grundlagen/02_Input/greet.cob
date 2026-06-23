@@ -7,7 +7,8 @@ working-storage section.
 *> pic = schneid das ab, wenn User mehr als 30 Zeichen eingibt -> KEIN Error
 *> Zahlen = Hierarchiebene = Basically Ordnerstruktur -> gut für Cluster -> Man kann über obere Ebende den GESAMTEN Block direkt schieben
 *> Namenskonvention: klein und mit Bindestrich
-*> Pic = Picture = Datenformat -> x = ein BELIEBIGES Zeichen, x(30) = 30 beliebige Zeichen
+*> Pic = Picture = BEABSICHTIGTES Datenformat -> x = ein BELIEBIGES Zeichen, x(30) = 30 beliebige Zeichen
+*> ABER bei falscher Eingabe kommt kein Fehler. Wenn man damit später arbeitet Krise, aber den Speicher juckt das nicht
 01 user-name pic x(30).
 
 procedure division.
