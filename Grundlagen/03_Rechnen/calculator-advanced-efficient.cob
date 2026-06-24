@@ -15,12 +15,27 @@ procedure division.
        display "Welche Operation? (+,-,*,/)"
        accept operation.
 
+              *> Wenn falscher Operator hier schon Abbruch
+       evaluate operation
+           when "+"
+               continue
+           when "-"
+               continue
+           when "*"
+               continue
+           when "/"
+               continue
+           when other 
+               display "Unbekannter Operator"
+               goback 
+       end-evaluate
+
        display "Erste Zahl eingeben".
        accept first-number.
 
        display "Zweite Zahl eingeben".
        accept second-number.
-       *> Switch Case Äquivalent
+
        evaluate true 
            when operation = "+"
                add first-number to second-number giving result
@@ -34,9 +49,6 @@ procedure division.
                    goback 
                end-if
                divide first-number by second-number giving result
-           when other
-               display "Unbekannter Operator"
-               goback 
        end-evaluate
 
        display "Ergebnis:" result
