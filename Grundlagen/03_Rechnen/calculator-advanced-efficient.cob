@@ -5,15 +5,19 @@ data division.
 working-storage section.
 
 01 operation pic x.
+
+01 first-number-input pic x(4).
+01 second-number-input pic x(4).
+
 01 first-number pic 9(4).
 01 second-number pic 9(4).
 *> s = signed = Vorzeichen, v99 = 2 Nachkommastellen = 2020 = 20,20
 01 result pic s9(8)v99.
 
 procedure division.
-
+*> Operator einlesen und checken
        display "Welche Operation? (+,-,*,/)"
-       accept operation.
+       accept operation
 
               *> Wenn falscher Operator hier schon Abbruch
        evaluate operation
@@ -30,12 +34,25 @@ procedure division.
                goback 
        end-evaluate
 
-       display "Erste Zahl eingeben".
-       accept first-number.
+*> Rechenwerte einlesen und checken
 
-       display "Zweite Zahl eingeben".
-       accept second-number.
+       display "Erste Zahl eingeben"
+       accept first-number-input
+       *> Da die Nummern mit 4 Zeichen alloziert werden, wird mit Leehrzeichen aufgefüllt -> Nicht rein numerisch -> Trim
+       if function trim(first-number-input) is not numeric
+           display "Ungueltige Eingabe"
+           goback 
+       end-if
+       move function trim(first-number-input) to first-number 
 
+       display "Zweite Zahl eingeben"
+       accept second-number-input
+       if function trim(second-number-input) is not numeric
+           display "Ungueltige Eingabe"
+           goback 
+       end-if
+       move function trim(second-number-input) to second-number
+*> Division durch 0 abfangen
        evaluate true 
            when operation = "+"
                add first-number to second-number giving result
